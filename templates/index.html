@@ -20,23 +20,24 @@
     <button onclick="scanSector()">INITIATE SCAN</button>
     <div id = "result">Waiting for data...</div>
 
-    <script>
-        //java script bridge
-
-        async function scanSector(){
-            //ask python for the data
-            //fetch command hits the route defined in app.py
-            //fetch gets the data from the url specificed
-            let response = await fetch('/get_weather/hallelujah_mountains');
+<script>
+        async function scanSector(sectorKey) {
+            // 1. Update the status text immediately so it feels responsive
+            document.getElementById("result").innerText = "CONNECTING TO SATELLITE...";
             
-            //unwrap the json data
-            let data = await response.json();
-
-            //update the html
-            //find div named result and change its text based on what the actual temperature is
-            document.getElementById("result").innerText =
-                "TEMP: " + data.temp + "°C | WIND: " + data.wind + " km/h";
-        
+            // 2. Fetch data dynamically based on which button was clicked
+            // Notice we put 'sectorKey' into the URL
+            let response = await fetch('/get_weather/' + sectorKey);
+            
+            // 3. Handle the data
+            if (response.ok) {
+                let data = await response.json();
+                document.getElementById("result").innerText = 
+                    "SECTOR: " + data.location + "\n" + 
+                    "TEMP: " + data.temp + "°C | WIND: " + data.wind + " km/h";
+            } else {
+                document.getElementById("result").innerText = "SIGNAL LOST (404)";
+            }
         }
     </script>
 
