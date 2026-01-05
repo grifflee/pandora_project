@@ -10,14 +10,14 @@ LOCATIONS = {
         "lat": 29.13, 
         "lon": 110.48,
         # NEW LINE: A direct link to a picture of Zhangjiajie (the real mountains)
-        "image": "https://images.unsplash.com/photo-1552528148-18eeb682143b?q=80&w=2000"
+        "image": "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*PPxE0RqyWyLXb8wAliU15g.jpeg"
     },
     "eastern_sea": {
         "name": "Eastern Sea", 
         "lat": 3.20, 
         "lon": 73.22,
         # NEW LINE: A direct link to a tropical reef
-        "image": "https://images.unsplash.com/photo-1582967788606-a171f1080ca8?q=80&w=2000"
+        "image": "https://i.natgeofe.com/n/da379044-8eab-4a53-b9a7-d9cfbf314179/GettyImages-143949963.jpg"
     }
 }
 
