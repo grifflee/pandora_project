@@ -14,6 +14,6 @@ LOCATIONS = {
     "hallelujah_mountains": {
         "name": "Hallelujah Mountains",
         "lat": 29.13,
-        "lon": 110.48
+        "lon": 110.47
     }
 }
