@@ -1,0 +1,46 @@
+<!DOCTYPE html> 
+<html> 
+<head>
+    <title>RDA Weather Systems</title>
+    <style>
+        
+        /*set the background to black */
+        body { background-color: black; color: #00ff00; font-family: monospace; text-align: center; margin-top: 50px;}
+        button { background-color: #004400; color: #00ff00; border: 1px solid #00ff00; padding: 10px 20px; cursor: pointer; }
+        button.hover {background-color: #00ff00; color: black; }
+
+    </style>
+
+</head>
+<body>
+    <!-- test --> 
+    <h1> RDA SECTOR SCANNER</h1>
+    <p> Target: Hallelujah Mountains</p>
+    <!-- on a button click it runs the javascript scanSector function --> 
+    <button onclick="scanSector()">INITIATE SCAN</button>
+    <div id = "result">Waiting for data...</div>
+
+    <script>
+        //java script bridge
+
+        async function scanSector(){
+            //ask python for the data
+            //fetch command hits the route defined in app.py
+            //fetch gets the data from the url specificed
+            let response = await fetch('/get_weather/hallelujah_mountains');
+            
+            //unwrap the json data
+            let data = await response.json();
+
+            //update the html
+            //find div named result and change its text based on what the actual temperature is
+            document.getElementById("result").innerText =
+                "TEMP: " + data.temp + "°C | WIND: " + data.wind + " km/h";
+        
+        }
+    </script>
+
+</body>
+
+
+</html>
