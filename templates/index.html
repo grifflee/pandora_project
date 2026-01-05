@@ -5,7 +5,18 @@
     <style>
         
         /*set the background to black */
-        body { background-color: black; color: #00ff00; font-family: monospace; text-align: center; margin-top: 50px;}
+        body { 
+            background-color: black; 
+            color: #00ff00; 
+            font-family: monospace; 
+            text-align: center; 
+            margin-top: 50px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            transition: background-iamge 0.5s ease-in-out;
+            background-blend-mode: overlay;
+        }
         button { background-color: #004400; color: #00ff00; border: 1px solid #00ff00; padding: 10px 20px; cursor: pointer; }
         button.hover {background-color: #00ff00; color: black; }
 
@@ -19,6 +30,9 @@
     <!-- on a button click it runs the javascript scanSector function --> 
     <button onclick="scanSector()">INITIATE SCAN</button>
     <div id = "result">Waiting for data...</div>
+
+    <button onclick="scanSector('hallelujah_mountains')">SCAN SECTOR: MOUNTAINS</button>
+    <button onclick="scanSector('eastern_sea')">SCAN SECTOR: REEF</button>
 
 <script>
         async function scanSector(sectorKey) {

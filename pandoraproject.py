@@ -8,12 +8,16 @@ LOCATIONS = {
     "hallelujah_mountains": {
         "name": "Hallelujah Mountains", 
         "lat": 29.13, 
-        "lon": 110.48
+        "lon": 110.48,
+        # NEW LINE: A direct link to a picture of Zhangjiajie (the real mountains)
+        "image": "https://images.unsplash.com/photo-1552528148-18eeb682143b?q=80&w=2000"
     },
     "eastern_sea": {
         "name": "Eastern Sea", 
         "lat": 3.20, 
-        "lon": 73.22
+        "lon": 73.22,
+        # NEW LINE: A direct link to a tropical reef
+        "image": "https://images.unsplash.com/photo-1582967788606-a171f1080ca8?q=80&w=2000"
     }
 }
 
@@ -47,10 +51,12 @@ def get_weather(location_key):
     data = response.json()
     
     # 4. The Response (Serving the dish)
+    
     return jsonify({
         "location": target['name'],
         "temp": data['current_weather']['temperature'],
-        "wind": data['current_weather']['windspeed']
+        "wind": data['current_weather']['windspeed'],
+        "image": target['image']  # <--- ADD THIS LINE
     })
 
 # 5. Start the Server
