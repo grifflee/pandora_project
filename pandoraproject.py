@@ -67,9 +67,9 @@ LOCATIONS = {
 # LESSON: Simple cache dictionary
 # This stores recent API responses so we don't hit the API every time
 # Key: location_key, Value: tuple of (data, timestamp)
-# We'll expire cache entries after 5 minutes (300 seconds)
+# We'll expire cache entries after 10 seconds (for faster updates during learning)
 WEATHER_CACHE = {}
-CACHE_DURATION = 300  # 5 minutes in seconds
+CACHE_DURATION = 10  # 10 seconds in seconds (reduced for real-time feel)
 
 
 def get_weather_from_api(lat, lon):
@@ -192,6 +192,23 @@ def wiki():
     It renders the wiki.html template.
     """
     return render_template('wiki.html')
+
+
+# LESSON: Dynamic Route for Character Pages
+# @app.route('/character/<character_name>') creates a route that accepts a character name
+# Example: /character/jake will pass 'jake' as the character_name parameter
+@app.route('/character/<character_name>')
+def character_page(character_name):
+    """
+    LESSON: Character Page Route
+    -----------------------------
+    This function handles requests to character pages.
+    It renders the character.html template and passes the character name.
+    
+    Parameters:
+        character_name (str): The name of the character from the URL
+    """
+    return render_template('character.html', character_name=character_name)
 
 
 # LESSON: Dynamic Route with Parameter

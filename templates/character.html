@@ -1,0 +1,118 @@
+<!DOCTYPE html> 
+<html> 
+<head>
+    <title>RDA Wiki - Character</title>
+    <style>
+        body { 
+            background-color: black; 
+            color: #0b500b; 
+            font-family: monospace; 
+            text-align: center; 
+            margin-top: 50px;
+            padding: 20px;
+        }
+        
+        nav {
+            margin-bottom: 30px;
+        }
+        
+        nav a {
+            color: #00ff00;
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 2px solid #00ff00;
+            margin: 0 10px;
+            display: inline-block;
+        }
+        
+        #content {
+            background-color: white;
+            color: black;
+            border: 2px solid #00ff00;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 800px;
+            text-align: left;
+        }
+        
+        .character-image {
+            width: 300px;
+            height: 300px;
+            border: 2px solid #00ff00;
+            margin: 20px auto;
+            display: block;
+        }
+        
+        .stats-section {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #00ff00;
+        }
+        
+        .description-section {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #00ff00;
+        }
+    </style>
+</head>
+<body>
+    <!-- LESSON: Navigation Tabs -->
+    <nav>
+        <a href="/">RADAR</a>
+        <a href="/wiki">WIKI</a>
+    </nav>
+    
+    <h1>RDA WIKI - CHARACTER PROFILE</h1>
+    
+    <div id="content">
+        <!-- LESSON: Jinja2 Template Variable -->
+        <!-- {{ character_name }} is a template variable that gets replaced with the actual character name -->
+        <h2>{{ character_name|title }}</h2>
+        
+        <!-- LESSON: Character Image Slot -->
+        <!-- This is where you'll add the character's main image -->
+        <div style="text-align: center;">
+            <img src="/static/{{ character_name }}_profile.jpg" alt="{{ character_name|title }}" class="character-image" onerror="this.style.display='none'">
+            <p style="color: #666; font-style: italic;">[Image slot: Add {{ character_name }}_profile.jpg to static folder]</p>
+        </div>
+        
+        <!-- LESSON: Stats Section -->
+        <div class="stats-section">
+            <h3>STATISTICS</h3>
+            <p>[Stats section - Add character statistics here]</p>
+            <ul>
+                <li>Strength: [Add value]</li>
+                <li>Speed: [Add value]</li>
+                <li>Intelligence: [Add value]</li>
+                <li>Combat: [Add value]</li>
+            </ul>
+        </div>
+        
+        <!-- LESSON: Description Section -->
+        <div class="description-section">
+            <h3>DESCRIPTION</h3>
+            <p>[Description section - Add character description here]</p>
+        </div>
+        
+        <!-- LESSON: Additional Images Section -->
+        <div class="description-section">
+            <h3>ADDITIONAL IMAGES</h3>
+            <p>[Additional images section - Add more character images here]</p>
+            <!-- Image slots for additional pictures -->
+            <div style="text-align: center; margin: 20px 0;">
+                <img src="/static/{{ character_name }}_image1.jpg" alt="Image 1" style="width: 200px; height: 200px; border: 1px solid #00ff00; margin: 10px; display: inline-block;" onerror="this.style.display='none'">
+                <img src="/static/{{ character_name }}_image2.jpg" alt="Image 2" style="width: 200px; height: 200px; border: 1px solid #00ff00; margin: 10px; display: inline-block;" onerror="this.style.display='none'">
+                <img src="/static/{{ character_name }}_image3.jpg" alt="Image 3" style="width: 200px; height: 200px; border: 1px solid #00ff00; margin: 10px; display: inline-block;" onerror="this.style.display='none'">
+            </div>
+            <p style="color: #666; font-style: italic;">[Image slots: Add {{ character_name }}_image1.jpg, image2.jpg, image3.jpg to static folder]</p>
+        </div>
+        
+        <!-- LESSON: Back Button -->
+        <div style="text-align: center; margin-top: 30px;">
+            <a href="/wiki" style="color: #00ff00; text-decoration: none; padding: 10px 20px; border: 2px solid #00ff00; display: inline-block;">← Back to Wiki</a>
+        </div>
+    </div>
+</body>
+</html>
+

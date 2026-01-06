@@ -173,7 +173,9 @@
     <!-- LESSON: JavaScript function for button clicks -->
     <script>
         function showCharacter(characterName) {
-            alert("You clicked on " + characterName + "!");
+            // LESSON: window.location.href redirects to a new page
+            // This navigates to the character's individual page
+            window.location.href = '/character/' + characterName;
         }
     </script>
 </body>
