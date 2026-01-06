@@ -1,118 +1,545 @@
 <!DOCTYPE html> 
+<!--
+LESSON: HTML Document Type Declaration
+=======================================
+Line 1: <!DOCTYPE html>
+  - <!DOCTYPE: HTML declaration tag (not a regular HTML tag)
+  - html: Specifies HTML5 document type
+  - This tells the browser "this is an HTML5 document"
+  - Must be the FIRST line of every HTML file
+-->
 <html> 
+<!--
+LESSON: HTML Root Element
+=========================
+Line 2: <html>
+  - <html>: Root element (contains entire HTML document)
+  - All other HTML elements go inside this
+  - lang attribute could be added: <html lang="en">
+-->
 <head>
+<!--
+LESSON: HTML Head Section
+=========================
+Line 3: <head>
+  - <head>: Container for metadata (not visible on page)
+  - Contains: title, styles, scripts, meta tags
+  - This section is processed by browser but not displayed
+-->
+    <!--
+    LESSON: Page Title
+    ==================
+    Line 4: <title>RDA Wiki - Character</title>
+      - <title>: Sets browser tab title
+      - "RDA Wiki - Character": Text shown in browser tab
+      - Not visible on the page itself, only in tab
+    -->
     <title>RDA Wiki - Character</title>
+    
+    <!--
+    LESSON: CSS Styles Section
+    ==========================
+    Line 5: <style>
+      - <style>: Tag that contains CSS code
+      - CSS (Cascading Style Sheets) controls how elements look
+      - All styles between <style> and </style> apply to this page
+    -->
     <style>
+        /* Line 6-13: Body Element Styling */
+        /* body: CSS selector (targets <body> HTML element) */
         body { 
+            /* Line 7: background-color: black; */
+            /*   - background-color: CSS property (sets background color) */
+            /*   - black: Color value (makes background black) */
+            /*   - ;: Ends CSS declaration */
             background-color: black; 
+            
+            /* Line 8: color: #0b500b; */
+            /*   - color: CSS property (sets text color) */
+            /*   - #0b500b: Hex color code (dark green) */
             color: #0b500b; 
+            
+            /* Line 9: font-family: monospace; */
+            /*   - font-family: CSS property (sets font) */
+            /*   - monospace: Font name (all characters same width, like code) */
             font-family: monospace; 
+            
+            /* Line 10: text-align: center; */
+            /*   - text-align: CSS property (horizontal alignment) */
+            /*   - center: Value (centers text horizontally) */
             text-align: center; 
+            
+            /* Line 11: margin-top: 50px; */
+            /*   - margin-top: CSS property (space above element) */
+            /*   - 50px: Value (50 pixels of space) */
             margin-top: 50px;
+            
+            /* Line 12: padding: 20px; */
+            /*   - padding: CSS property (space inside element) */
+            /*   - 20px: Value (20 pixels of space on all sides) */
             padding: 20px;
         }
         
+        /* Line 15-17: Navigation Styling */
+        /* nav: CSS selector (targets <nav> HTML element) */
         nav {
+            /* Line 16: margin-bottom: 30px; */
+            /*   - margin-bottom: Space below navigation */
             margin-bottom: 30px;
         }
         
+        /* Line 19-26: Navigation Link Styling */
+        /* nav a: CSS selector (targets <a> tags inside <nav>) */
+        /*   - nav: Parent selector */
+        /*   - (space): Means "inside" or "descendant of" */
+        /*   - a: Child selector (anchor/link tags) */
         nav a {
+            /* Line 20: color: #00ff00; */
+            /*   - color: Text color */
+            /*   - #00ff00: Hex color (bright green) */
             color: #00ff00;
+            
+            /* Line 21: text-decoration: none; */
+            /*   - text-decoration: Controls underline, etc. */
+            /*   - none: Removes default underline from links */
             text-decoration: none;
+            
+            /* Line 22: padding: 10px 20px; */
+            /*   - padding: Space inside element */
+            /*   - 10px 20px: 10px top/bottom, 20px left/right */
             padding: 10px 20px;
+            
+            /* Line 23: border: 2px solid #00ff00; */
+            /*   - border: Creates border around element */
+            /*   - 2px: Border width (2 pixels) */
+            /*   - solid: Border style (solid line) */
+            /*   - #00ff00: Border color (bright green) */
             border: 2px solid #00ff00;
+            
+            /* Line 24: margin: 0 10px; */
+            /*   - margin: Space outside element */
+            /*   - 0 10px: 0 top/bottom, 10px left/right */
             margin: 0 10px;
+            
+            /* Line 25: display: inline-block; */
+            /*   - display: Controls how element is laid out */
+            /*   - inline-block: Stays on same line but can have width/height */
             display: inline-block;
         }
         
+        /* Line 28-36: Content Container Styling */
+        /* #content: CSS ID selector (targets element with id="content") */
+        /*   - #: Indicates ID selector */
+        /*   - content: ID name */
         #content {
+            /* Line 29: background-color: white; */
+            /*   - background-color: Background color */
+            /*   - white: Color value */
             background-color: white;
+            
+            /* Line 30: color: black; */
+            /*   - color: Text color */
+            /*   - black: Color value */
             color: black;
+            
+            /* Line 31: border: 2px solid #00ff00; */
+            /*   - border: Border around content box */
             border: 2px solid #00ff00;
+            
+            /* Line 32: padding: 20px; */
+            /*   - padding: Space inside content box */
             padding: 20px;
+            
+            /* Line 33: margin: 20px auto; */
+            /*   - margin: Space outside content box */
+            /*   - 20px: Top and bottom margin */
+            /*   - auto: Left and right margin (centers the box) */
             margin: 20px auto;
+            
+            /* Line 34: max-width: 800px; */
+            /*   - max-width: Maximum width of element */
+            /*   - 800px: Value (won't get wider than 800 pixels) */
             max-width: 800px;
+            
+            /* Line 35: text-align: left; */
+            /*   - text-align: Horizontal text alignment */
+            /*   - left: Aligns text to left (overrides body's center) */
             text-align: left;
         }
         
+        /* Line 38-44: Character Image Styling */
+        /* .character-image: CSS class selector (targets elements with class="character-image") */
+        /*   - .: Indicates class selector */
+        /*   - character-image: Class name */
         .character-image {
+            /* Line 39: width: 300px; */
+            /*   - width: Element width */
+            /*   - 300px: Value (300 pixels wide) */
             width: 300px;
+            
+            /* Line 40: height: 300px; */
+            /*   - height: Element height */
+            /*   - 300px: Value (300 pixels tall) */
             height: 300px;
+            
+            /* Line 41: border: 2px solid #00ff00; */
+            /*   - border: Border around image */
             border: 2px solid #00ff00;
+            
+            /* Line 42: margin: 20px auto; */
+            /*   - margin: Space around image */
+            /*   - 20px: Top and bottom */
+            /*   - auto: Left and right (centers image) */
             margin: 20px auto;
+            
+            /* Line 43: display: block; */
+            /*   - display: Layout type */
+            /*   - block: Takes full width, starts on new line */
             display: block;
         }
         
+        /* Line 46-50: Stats Section Styling */
+        /* .stats-section: CSS class selector */
         .stats-section {
+            /* Line 47: margin: 20px 0; */
+            /*   - margin: Space outside section */
+            /*   - 20px: Top and bottom */
+            /*   - 0: Left and right */
             margin: 20px 0;
+            
+            /* Line 48: padding: 15px; */
+            /*   - padding: Space inside section */
             padding: 15px;
+            
+            /* Line 49: border: 1px solid #00ff00; */
+            /*   - border: Border around stats section */
             border: 1px solid #00ff00;
         }
         
+        /* Line 52-56: Description Section Styling */
+        /* .description-section: CSS class selector */
         .description-section {
+            /* Same styling as stats-section */
             margin: 20px 0;
             padding: 15px;
             border: 1px solid #00ff00;
         }
     </style>
+    <!-- Line 57: </style> - Closes the CSS styles section -->
+
 </head>
+<!-- Line 58: </head> - Closes the head section -->
+
 <body>
-    <!-- LESSON: Navigation Tabs -->
+<!--
+LESSON: HTML Body Section
+=========================
+Line 59: <body>
+  - <body>: Container for visible page content
+  - Everything inside <body> appears on the webpage
+  - This is where users see content
+-->
+    <!--
+    LESSON: Navigation Tabs
+    =======================
+    Line 60-64: Navigation links to other pages
+    -->
     <nav>
+    <!--
+    Line 61: <nav>
+      - <nav>: HTML5 semantic element (indicates navigation)
+      - Groups navigation links together
+      - Helps screen readers and search engines understand page structure
+    -->
+        <!--
+        Line 62: <a href="/">RADAR</a>
+          - <a>: Anchor tag (creates hyperlink)
+          - href="/": Link destination (forward slash = homepage)
+          - RADAR: Link text (what user sees and clicks)
+          - </a>: Closes anchor tag
+        -->
         <a href="/">RADAR</a>
+        
+        <!--
+        Line 63: <a href="/wiki">WIKI</a>
+          - <a>: Anchor tag
+          - href="/wiki": Link destination (wiki page)
+          - WIKI: Link text
+        -->
         <a href="/wiki">WIKI</a>
     </nav>
+    <!-- Line 64: </nav> - Closes navigation section -->
     
+    <!--
+    Line 66: <h1>RDA WIKI - CHARACTER PROFILE</h1>
+      - <h1>: Heading level 1 (largest heading)
+      - RDA WIKI - CHARACTER PROFILE: Heading text
+      - </h1>: Closes heading tag
+    -->
     <h1>RDA WIKI - CHARACTER PROFILE</h1>
     
+    <!--
+    Line 68: <div id="content">
+      - <div>: Division/container element (groups content)
+      - id="content": Unique identifier (matches #content CSS selector)
+      - This div will have white background, centered, max 800px wide
+    -->
     <div id="content">
-        <!-- LESSON: Jinja2 Template Variable -->
-        <!-- {{ character_name }} is a template variable that gets replaced with the actual character name -->
+        <!--
+        LESSON: Jinja2 Template Variable - THE KEY TO DYNAMIC CONTENT!
+        ===============================================================
+        Line 71: <h2>{{ character_name|title }}</h2>
+        
+        Breaking it down:
+        -----------------
+        - <h2>: Heading level 2 (smaller than h1)
+        - {{ }}: Jinja2 template syntax (Flask's template engine)
+        - character_name: Variable name (passed from Flask route)
+        - |title: Filter (capitalizes first letter of each word)
+        - </h2>: Closes heading tag
+        
+        How it works:
+        ------------
+        1. Flask route receives URL: /character/jake
+        2. Flask extracts 'jake' from URL
+        3. Flask calls: render_template('character.html', character_name='jake')
+        4. Flask processes template, finds {{ character_name }}
+        5. Flask replaces {{ character_name }} with 'jake'
+        6. Flask applies |title filter: 'jake' becomes 'Jake'
+        7. Final HTML sent to browser: <h2>Jake</h2>
+        
+        For different characters:
+        -------------------------
+        - /character/neytiri → <h2>Neytiri</h2>
+        - /character/kiri → <h2>Kiri</h2>
+        - /character/jake → <h2>Jake</h2>
+        
+        Same template, different content!
+        """
         <h2>{{ character_name|title }}</h2>
         
-        <!-- LESSON: Character Image Slot -->
-        <!-- This is where you'll add the character's main image -->
+        <!--
+        LESSON: Character Image with Dynamic Path
+        ==========================================
+        Line 75-78: Image that changes based on character
+        -->
         <div style="text-align: center;">
+        <!--
+        Line 75: <div style="text-align: center;">
+          - <div>: Container element
+          - style="...": Inline CSS (applies only to this element)
+          - text-align: center: Centers content inside div
+        -->
+            <!--
+            Line 76: <img src="/static/{{ character_name }}_profile.jpg" ...>
+            
+            Breaking it down:
+            -----------------
+            - <img>: Image element (displays picture)
+            - src="/static/{{ character_name }}_profile.jpg": Image source path
+              - /static/: Flask's static files folder
+              - {{ character_name }}: Template variable (gets replaced!)
+              - _profile.jpg: Filename suffix
+            
+            How it works:
+            ------------
+            1. Flask processes template
+            2. Finds {{ character_name }} in src attribute
+            3. Replaces with actual character name
+            
+            Examples:
+            --------
+            - For Jake: /static/jake_profile.jpg
+            - For Neytiri: /static/neytiri_profile.jpg
+            - For Kiri: /static/kiri_profile.jpg
+            
+            Each character page looks for their own image file!
+            
+            Other attributes:
+            ----------------
+            - alt="{{ character_name|title }}": Alternative text (for screen readers)
+            - class="character-image": CSS class (applies styling)
+            - onerror="this.style.display='none'": JavaScript (hides image if file doesn't exist)
+            -->
             <img src="/static/{{ character_name }}_profile.jpg" alt="{{ character_name|title }}" class="character-image" onerror="this.style.display='none'">
+            
+            <!--
+            Line 77: <p style="color: #666; font-style: italic;">[Image slot: ...]</p>
+              - <p>: Paragraph element
+              - style="...": Inline CSS (gray italic text)
+              - [Image slot: ...]: Placeholder text (tells user what to add)
+              - {{ character_name }}: Template variable (shows which file to add)
+            -->
             <p style="color: #666; font-style: italic;">[Image slot: Add {{ character_name }}_profile.jpg to static folder]</p>
         </div>
+        <!-- Line 78: </div> - Closes image container -->
         
-        <!-- LESSON: Stats Section -->
+        <!--
+        LESSON: Stats Section
+        =====================
+        Line 81-90: Placeholder for character statistics
+        -->
         <div class="stats-section">
+        <!--
+        Line 81: <div class="stats-section">
+          - <div>: Container element
+          - class="stats-section": CSS class (applies .stats-section styles)
+        -->
+            <!--
+            Line 82: <h3>STATISTICS</h3>
+              - <h3>: Heading level 3 (smaller than h2)
+              - STATISTICS: Heading text
+            -->
             <h3>STATISTICS</h3>
+            
+            <!--
+            Line 83: <p>[Stats section - Add character statistics here]</p>
+              - <p>: Paragraph element
+              - [Stats section...]: Placeholder text (user will replace this)
+            -->
             <p>[Stats section - Add character statistics here]</p>
+            
+            <!--
+            Line 84-89: <ul> and <li> - Unordered List
+            Line 84: <ul>
+              - <ul>: Unordered list (bullet points)
+            -->
             <ul>
+                <!--
+                Line 85: <li>Strength: [Add value]</li>
+                  - <li>: List item (one bullet point)
+                  - Strength: [Add value]: Placeholder text
+                -->
                 <li>Strength: [Add value]</li>
+                
+                <!-- Line 86-88: More list items (same structure) -->
                 <li>Speed: [Add value]</li>
                 <li>Intelligence: [Add value]</li>
                 <li>Combat: [Add value]</li>
             </ul>
+            <!-- Line 89: </ul> - Closes list -->
         </div>
+        <!-- Line 90: </div> - Closes stats section -->
         
-        <!-- LESSON: Description Section -->
+        <!--
+        LESSON: Description Section
+        ===========================
+        Line 93-96: Placeholder for character description
+        -->
         <div class="description-section">
+        <!--
+        Line 93: <div class="description-section">
+          - <div>: Container
+          - class="description-section": CSS class
+        -->
+            <!--
+            Line 94: <h3>DESCRIPTION</h3>
+              - <h3>: Heading level 3
+            -->
             <h3>DESCRIPTION</h3>
+            
+            <!--
+            Line 95: <p>[Description section - Add character description here]</p>
+              - <p>: Paragraph
+              - [Description section...]: Placeholder text
+            -->
             <p>[Description section - Add character description here]</p>
         </div>
+        <!-- Line 96: </div> - Closes description section -->
         
-        <!-- LESSON: Additional Images Section -->
+        <!--
+        LESSON: Additional Images Section
+        ==================================
+        Line 99-109: Placeholder for extra character images
+        -->
         <div class="description-section">
+        <!-- Line 99: <div class="description-section"> -->
+            <!--
+            Line 100: <h3>ADDITIONAL IMAGES</h3>
+              - <h3>: Heading
+            -->
             <h3>ADDITIONAL IMAGES</h3>
+            
+            <!--
+            Line 101: <p>[Additional images section...]</p>
+              - <p>: Paragraph with placeholder text
+            -->
             <p>[Additional images section - Add more character images here]</p>
-            <!-- Image slots for additional pictures -->
+            
+            <!--
+            Line 103-107: Image slots for additional pictures
+            Line 103: <div style="text-align: center; margin: 20px 0;">
+              - <div>: Container for images
+              - style="...": Inline CSS (centers images, adds margin)
+            -->
             <div style="text-align: center; margin: 20px 0;">
+                <!--
+                Line 104: <img src="/static/{{ character_name }}_image1.jpg" ...>
+                
+                Breaking it down:
+                -----------------
+                - <img>: Image element
+                - src="/static/{{ character_name }}_image1.jpg": Dynamic image path
+                  - /static/: Static folder
+                  - {{ character_name }}: Template variable (replaced with character name)
+                  - _image1.jpg: Filename suffix
+                
+                Examples:
+                ---------
+                - For Jake: /static/jake_image1.jpg
+                - For Neytiri: /static/neytiri_image1.jpg
+                
+                Other attributes:
+                ----------------
+                - alt="Image 1": Alternative text
+                - style="...": Inline CSS (sizes image, adds border and margin)
+                - onerror="this.style.display='none'": Hides image if file doesn't exist
+                -->
                 <img src="/static/{{ character_name }}_image1.jpg" alt="Image 1" style="width: 200px; height: 200px; border: 1px solid #00ff00; margin: 10px; display: inline-block;" onerror="this.style.display='none'">
+                
+                <!--
+                Line 105-106: More image slots (same structure as above)
+                - image2.jpg and image3.jpg for additional pictures
+                -->
                 <img src="/static/{{ character_name }}_image2.jpg" alt="Image 2" style="width: 200px; height: 200px; border: 1px solid #00ff00; margin: 10px; display: inline-block;" onerror="this.style.display='none'">
                 <img src="/static/{{ character_name }}_image3.jpg" alt="Image 3" style="width: 200px; height: 200px; border: 1px solid #00ff00; margin: 10px; display: inline-block;" onerror="this.style.display='none'">
             </div>
+            <!-- Line 107: </div> - Closes image container -->
+            
+            <!--
+            Line 108: <p style="...">[Image slots: ...]</p>
+              - <p>: Paragraph with placeholder text
+              - Shows user which files to add
+              - {{ character_name }}: Template variable (shows character name)
+            -->
             <p style="color: #666; font-style: italic;">[Image slots: Add {{ character_name }}_image1.jpg, image2.jpg, image3.jpg to static folder]</p>
         </div>
+        <!-- Line 109: </div> - Closes additional images section -->
         
-        <!-- LESSON: Back Button -->
+        <!--
+        LESSON: Back Button
+        ===================
+        Line 112-114: Link back to wiki page
+        -->
         <div style="text-align: center; margin-top: 30px;">
+        <!--
+        Line 112: <div style="...">
+          - <div>: Container
+          - style="...": Inline CSS (centers content, adds top margin)
+        -->
+            <!--
+            Line 113: <a href="/wiki" style="...">← Back to Wiki</a>
+              - <a>: Anchor tag (hyperlink)
+              - href="/wiki": Link destination (wiki page)
+              - style="...": Inline CSS (green text, padding, border)
+              - ← Back to Wiki: Link text (arrow + text)
+            -->
             <a href="/wiki" style="color: #00ff00; text-decoration: none; padding: 10px 20px; border: 2px solid #00ff00; display: inline-block;">← Back to Wiki</a>
         </div>
+        <!-- Line 114: </div> - Closes back button container -->
     </div>
+    <!-- Line 115: </div> - Closes main content div -->
 </body>
+<!-- Line 116: </body> - Closes body section -->
 </html>
-
+<!-- Line 117: </html> - Closes HTML root element -->
