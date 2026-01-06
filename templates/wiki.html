@@ -34,6 +34,32 @@
             max-width: 800px;
             text-align: left;
         }
+        
+        /* LESSON: CSS Class Selector */
+        /* .character-button targets elements with class="character-button" */
+        .character-button {
+            background-color: #004400;
+            border: 2px solid #00ff00;
+            padding: 15px;
+            margin: 10px;
+            cursor: pointer;
+            display: inline-block;
+            text-align: center;
+        }
+        
+        /* LESSON: CSS for images inside character buttons */
+        .character-button img {
+            width: 150px;
+            height: 150px;
+            display: block;
+            margin: 0 auto 10px auto;
+        }
+        
+        .character-button span {
+            color: #00ff00;
+            font-size: 16px;
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -48,7 +74,83 @@
     <div id="content">
         <h2>Welcome to the RDA Wiki</h2>
         <p>This is the wiki page. Information about Pandora locations will go here.</p>
+        
+        <!-- LESSON: Character Buttons with Images -->
+        <div style="text-align: center; margin-top: 30px;">
+            <!-- LESSON: Button for Jake Sully -->
+            <button class="character-button" onclick="showCharacter('jake')">
+                <img src="/static/jake_sully.jpg" alt="Jake Sully">
+                <span>Jake Sully</span>
+            </button>
+            
+            <!-- LESSON: Button for Neytiri -->
+            <button class="character-button" onclick="showCharacter('neytiri')">
+                <img src="/static/neytiri.jpg" alt="Neytiri">
+                <span>Neytiri</span>
+            </button>
+            
+            <!-- LESSON: Button for Colonel Miles Quaritch -->
+            <button class="character-button" onclick="showCharacter('colonel')">
+                <img src="/static/colonel_quaritch.jpeg" alt="Colonel Miles Quaritch">
+                <span>Colonel Quaritch</span>
+            </button>
+            
+            <!-- LESSON: Button for Ronal (Fire Princess) -->
+            <button class="character-button" onclick="showCharacter('ronal')">
+                <img src="/static/ronal.jpg" alt="Ronal">
+                <span>Ronal</span>
+            </button>
+            
+            <!-- LESSON: Button for Kiri -->
+            <button class="character-button" onclick="showCharacter('kiri')">
+                <img src="/static/kiri.jpg" alt="Kiri">
+                <span>Kiri</span>
+            </button>
+            
+            <!-- LESSON: Button for Toruk -->
+            <button class="character-button" onclick="showCharacter('toruk')">
+                <img src="/static/toruk.jpg" alt="Toruk">
+                <span>Toruk</span>
+            </button>
+            
+            <!-- LESSON: Button for Tuk (Youngest Daughter) -->
+            <button class="character-button" onclick="showCharacter('tuk')">
+                <img src="/static/tuk.jpg" alt="Tuk">
+                <span>Tuk</span>
+            </button>
+            
+            <!-- LESSON: Button for Neteyam -->
+            <button class="character-button" onclick="showCharacter('neteyam')">
+                <img src="/static/neteyam.jpg" alt="Neteyam">
+                <span>Neteyam</span>
+            </button>
+            
+            <!-- LESSON: Button for Lo'ak -->
+            <button class="character-button" onclick="showCharacter('loak')">
+                <img src="/static/loak.jpg" alt="Lo'ak">
+                <span>Lo'ak</span>
+            </button>
+            
+            <!-- LESSON: Button for Tsireya -->
+            <button class="character-button" onclick="showCharacter('tsireya')">
+                <img src="/static/tsireya.jpg" alt="Tsireya">
+                <span>Tsireya</span>
+            </button>
+            
+            <!-- LESSON: Button for Tonowari -->
+            <button class="character-button" onclick="showCharacter('tonowari')">
+                <img src="/static/tonowari.jpg" alt="Tonowari">
+                <span>Tonowari</span>
+            </button>
+        </div>
     </div>
+    
+    <!-- LESSON: JavaScript function for button clicks -->
+    <script>
+        function showCharacter(characterName) {
+            alert("You clicked on " + characterName + "!");
+        }
+    </script>
 </body>
 </html>
 
