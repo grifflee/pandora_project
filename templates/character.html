@@ -293,7 +293,7 @@ Line 59: <body>
         Breaking it down:
         -----------------
         - <h2>: Heading level 2 (smaller than h1)
-        - {{ }}: Jinja2 template syntax (Flask's template engine)
+        - { { } }: Jinja2 template syntax (Flask's template engine) - note: spaces added to avoid template parsing
         - character_name: Variable name (passed from Flask route)
         - |title: Filter (capitalizes first letter of each word)
         - </h2>: Closes heading tag
@@ -315,7 +315,7 @@ Line 59: <body>
         - /character/jake → <h2>Jake</h2>
         
         Same template, different content!
-        """
+        -->
         <h2>{{ character_name|title }}</h2>
         
         <!--
