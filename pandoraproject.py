@@ -10,14 +10,18 @@ LOCATIONS = {
         "lat": 29.13, 
         "lon": 110.48,
         # NEW LINE: A direct link to a picture of Zhangjiajie (the real mountains)
-        "image": "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*PPxE0RqyWyLXb8wAliU15g.jpeg"
+        "image": "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*PPxE0RqyWyLXb8wAliU15g.jpeg",
+        "status": "Stable",       # <--- NEW
+        "status_color": "green"   # <--- NEW
     },
     "eastern_sea": {
         "name": "Eastern Sea", 
         "lat": 3.20, 
         "lon": 73.22,
         # NEW LINE: A direct link to a tropical reef
-        "image": "static/eastern_sea.png"
+        "image": "static/eastern_sea.png",
+        "status": "RDA Activity Detected", # <--- NEW
+        "status_color": "red"              # <--- NEW
     }
 }
 
@@ -30,10 +34,20 @@ def home():
 # 2. The Route (The Door)
 @app.route('/get_weather/<location_key>')
 def get_weather(location_key):
-    # Check if the location exists in our dictionary
-    if location_key not in LOCATIONS:
-        return jsonify({"error": "Unknown location"}), 404
-
+    # Get the static data from your dictionary
+    location_data = LOCATIONS.get(location_key)
+    
+    # ... (your existing random weather logic here) ...
+    
+    # Send it all back to JavaScript
+    return jsonify({
+        "location": location_data["name"],
+        "temp": current_temp, # (your random temp variable)
+        "wind": current_wind, # (your random wind variable)
+        "image": location_data["image"],
+        "status": location_data["status"],             # <--- ADD THIS
+        "status_color": location_data["status_color"]  # <--- ADD THIS
+    })
     # Get the real coordinates
     target = LOCATIONS[location_key]
     

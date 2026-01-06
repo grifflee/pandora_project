@@ -7,7 +7,7 @@
         /*set the background to black */
         body { 
             background-color: black; 
-            color: #00ff00; 
+            color: #0b500b; 
             font-family: monospace; 
             text-align: center; 
             margin-top: 50px;
@@ -50,6 +50,11 @@
                 document.getElementById("result").innerText = 
                     "SECTOR: " + data.location + "\n" + 
                     "TEMP: " + data.temp + "°C | WIND: " + data.wind + " km/h";
+
+                    // THIS IS THE NEW PART:
+                    "<span style='color: " + data.status_color + "; font-size: 1.2em; font-weight: bold;'>" +
+                    "STATUS: " + data.status + 
+                    "</span>";
 
                     //update the background image to have an actual picture
                 document.body.style.backgroundImage = "url('" + data.image + "')";
