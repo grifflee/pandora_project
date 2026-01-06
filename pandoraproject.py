@@ -151,6 +151,155 @@ LOCATIONS = {
     }
 }  # Line 65: } - Closes the LOCATIONS dictionary
 
+# Character data dictionary - stores character information
+# This makes it easy to modify pictures and descriptions for each character
+CHARACTERS = {
+    "jake": {
+        "name": "Jake Sully",
+        "image": "jake_sully.jpg",  # Main profile image filename
+        "additional_images": [],  # List of additional image filenames (e.g., ["jake_action1.jpg", "jake_action2.jpg"])
+        "description": "[Description]: Jake sully is the main character of the Avatar franchise",
+        "stats": {
+            "strength": "98",
+            "speed": "88",
+            "intelligence": "90",
+            "combat": "99"
+        }
+    },
+    "neytiri": {
+        "name": "Neytiri",
+        "image": "neytiri.jpg",
+        "additional_images": [],
+        "description": "[Description section - Add character description here]",
+        "stats": {
+            "strength": "[Add value]",
+            "speed": "[Add value]",
+            "intelligence": "[Add value]",
+            "combat": "[Add value]"
+        }
+    },
+    "colonel": {
+        "name": "Colonel Miles Quaritch",
+        "image": "colonel_quaritch.jpeg",
+        "additional_images": [],
+        "description": "[Description section - Add character description here]",
+        "stats": {
+            "strength": "[Add value]",
+            "speed": "[Add value]",
+            "intelligence": "[Add value]",
+            "combat": "[Add value]"
+        }
+    },
+    "ronal": {
+        "name": "Ronal",
+        "image": "ronal.jpg",
+        "additional_images": [],
+        "description": "[Description section - Add character description here]",
+        "stats": {
+            "strength": "[Add value]",
+            "speed": "[Add value]",
+            "intelligence": "[Add value]",
+            "combat": "[Add value]"
+        }
+    },
+    "kiri": {
+        "name": "Kiri",
+        "image": "kiri.jpg",
+        "additional_images": [],
+        "description": "[Description section - Add character description here]",
+        "stats": {
+            "strength": "[Add value]",
+            "speed": "[Add value]",
+            "intelligence": "[Add value]",
+            "combat": "[Add value]"
+        }
+    },
+    "toruk": {
+        "name": "Toruk",
+        "image": "toruk.jpg",
+        "additional_images": [],
+        "description": "[Description section - Add character description here]",
+        "stats": {
+            "strength": "[Add value]",
+            "speed": "[Add value]",
+            "intelligence": "[Add value]",
+            "combat": "[Add value]"
+        }
+    },
+    "tuk": {
+        "name": "Tuk",
+        "image": "tuk.jpg",
+        "additional_images": [],
+        "description": "[Description section - Add character description here]",
+        "stats": {
+            "strength": "[Add value]",
+            "speed": "[Add value]",
+            "intelligence": "[Add value]",
+            "combat": "[Add value]"
+        }
+    },
+    "neteyam": {
+        "name": "Neteyam",
+        "image": "neteyam.jpg",
+        "additional_images": [],
+        "description": "[Description section - Add character description here]",
+        "stats": {
+            "strength": "[Add value]",
+            "speed": "[Add value]",
+            "intelligence": "[Add value]",
+            "combat": "[Add value]"
+        }
+    },
+    "loak": {
+        "name": "Lo'ak",
+        "image": "loak.jpg",
+        "additional_images": [],
+        "description": "[Description section - Add character description here]",
+        "stats": {
+            "strength": "[Add value]",
+            "speed": "[Add value]",
+            "intelligence": "[Add value]",
+            "combat": "[Add value]"
+        }
+    },
+    "tsireya": {
+        "name": "Tsireya",
+        "image": "tsireya.jpg",
+        "additional_images": [],
+        "description": "[Description section - Add character description here]",
+        "stats": {
+            "strength": "[Add value]",
+            "speed": "[Add value]",
+            "intelligence": "[Add value]",
+            "combat": "[Add value]"
+        }
+    },
+    "tonowari": {
+        "name": "Tonowari",
+        "image": "tonowari.jpg",
+        "additional_images": [],
+        "description": "[Description section - Add character description here]",
+        "stats": {
+            "strength": "[Add value]",
+            "speed": "[Add value]",
+            "intelligence": "[Add value]",
+            "combat": "[Add value]"
+        }
+    },
+    "varang": {
+        "name": "Varang",
+        "image": "varang.jpg",
+        "additional_images": [],
+        "description": "[Description section - Add character description here]",
+        "stats": {
+            "strength": "[Add value]",
+            "speed": "[Add value]",
+            "intelligence": "[Add value]",
+            "combat": "[Add value]"
+        }
+    }
+}
+
 # Line 67-72: Cache setup for weather data
 # Line 71: WEATHER_CACHE = {}
 #   - WEATHER_CACHE: Variable name (uppercase = constant)
@@ -489,6 +638,20 @@ def character_page(character_name):
     Parameters:
         character_name (str): The name of the character from the URL
     """
+    # Get character data if it exists, otherwise use defaults
+    character_data = CHARACTERS.get(character_name, {
+        "name": character_name.title(),
+        "image": f"{character_name}.jpg",
+        "additional_images": [],
+        "description": "[Description section - Add character description here]",
+        "stats": {
+            "strength": "[Add value]",
+            "speed": "[Add value]",
+            "intelligence": "[Add value]",
+            "combat": "[Add value]"
+        }
+    })
+    
     # Line 211: return render_template('character.html', character_name=character_name)
     #   - return: Sends response
     #   - render_template: Flask function
@@ -497,7 +660,8 @@ def character_page(character_name):
     #     - First character_name: Variable name in template ({{ character_name }})
     #     - Second character_name: Value from function parameter (from URL)
     #   - Template can now use {{ character_name }} and it will be replaced with actual value
-    return render_template('character.html', character_name=character_name)
+    #   - character_data=character_data: Passes character data (image, description, stats)
+    return render_template('character.html', character_name=character_name, character_data=character_data)
 
 
 # Line 214-293: Weather API endpoint route

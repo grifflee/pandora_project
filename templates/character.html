@@ -316,7 +316,7 @@ Line 59: <body>
         
         Same template, different content!
         -->
-        <h2>{{ character_name|title }}</h2>
+        <h2>{{ character_data.name }}</h2>
         
         <!--
         LESSON: Character Image with Dynamic Path
@@ -361,16 +361,16 @@ Line 59: <body>
             - class="character-image": CSS class (applies styling)
             - onerror="this.style.display='none'": JavaScript (hides image if file doesn't exist)
             -->
-            <img src="/static/{{ character_name }}_profile.jpg" alt="{{ character_name|title }}" class="character-image" onerror="this.style.display='none'">
+            <img src="/static/{{ character_data.image }}" alt="{{ character_data.name }}" class="character-image" onerror="this.style.display='none'">
             
             <!--
             Line 77: <p style="color: #666; font-style: italic;">[Image slot: ...]</p>
               - <p>: Paragraph element
               - style="...": Inline CSS (gray italic text)
               - [Image slot: ...]: Placeholder text (tells user what to add)
-              - {{ character_name }}: Template variable (shows which file to add)
+              - {{ character_data.image }}: Template variable (shows which file to add)
             -->
-            <p style="color: #666; font-style: italic;">[Image slot: Add {{ character_name }}_profile.jpg to static folder]</p>
+            <p style="color: #666; font-style: italic;">[Image: {{ character_data.image }} in static folder]</p>
         </div>
         <!-- Line 78: </div> - Closes image container -->
         
@@ -397,7 +397,7 @@ Line 59: <body>
               - <p>: Paragraph element
               - [Stats section...]: Placeholder text (user will replace this)
             -->
-            <p>[Stats section - Add character statistics here]</p>
+            <p>[Stats section]</p>
             
             <!--
             Line 84-89: <ul> and <li> - Unordered List
@@ -410,12 +410,12 @@ Line 59: <body>
                   - <li>: List item (one bullet point)
                   - Strength: [Add value]: Placeholder text
                 -->
-                <li>Strength: [Add value]</li>
+                <li>Strength: {{ character_data.stats.strength }}</li>
                 
                 <!-- Line 86-88: More list items (same structure) -->
-                <li>Speed: [Add value]</li>
-                <li>Intelligence: [Add value]</li>
-                <li>Combat: [Add value]</li>
+                <li>Speed: {{ character_data.stats.speed }}</li>
+                <li>Intelligence: {{ character_data.stats.intelligence }}</li>
+                <li>Combat: {{ character_data.stats.combat }}</li>
             </ul>
             <!-- Line 89: </ul> - Closes list -->
         </div>
@@ -443,7 +443,7 @@ Line 59: <body>
               - <p>: Paragraph
               - [Description section...]: Placeholder text
             -->
-            <p>[Description section - Add character description here]</p>
+            <p>{{ character_data.description }}</p>
         </div>
         <!-- Line 96: </div> - Closes description section -->
         
@@ -467,52 +467,20 @@ Line 59: <body>
             <p>[Additional images section - Add more character images here]</p>
             
             <!--
-            Line 103-107: Image slots for additional pictures
-            Line 103: <div style="text-align: center; margin: 20px 0;">
-              - <div>: Container for images
-              - style="...": Inline CSS (centers images, adds margin)
+            LESSON: Jinja2 Loop for Additional Images
+            ==========================================
+            This loop displays all images in the additional_images list.
+            If the list is empty, no images will be shown.
             -->
+            {% if character_data.additional_images %}
             <div style="text-align: center; margin: 20px 0;">
-                <!--
-                Line 104: <img src="/static/{{ character_name }}_image1.jpg" ...>
-                
-                Breaking it down:
-                -----------------
-                - <img>: Image element
-                - src="/static/{{ character_name }}_image1.jpg": Dynamic image path
-                  - /static/: Static folder
-                  - {{ character_name }}: Template variable (replaced with character name)
-                  - _image1.jpg: Filename suffix
-                
-                Examples:
-                ---------
-                - For Jake: /static/jake_image1.jpg
-                - For Neytiri: /static/neytiri_image1.jpg
-                
-                Other attributes:
-                ----------------
-                - alt="Image 1": Alternative text
-                - style="...": Inline CSS (sizes image, adds border and margin)
-                - onerror="this.style.display='none'": Hides image if file doesn't exist
-                -->
-                <img src="/static/{{ character_name }}_image1.jpg" alt="Image 1" style="width: 200px; height: 200px; border: 1px solid #00ff00; margin: 10px; display: inline-block;" onerror="this.style.display='none'">
-                
-                <!--
-                Line 105-106: More image slots (same structure as above)
-                - image2.jpg and image3.jpg for additional pictures
-                -->
-                <img src="/static/{{ character_name }}_image2.jpg" alt="Image 2" style="width: 200px; height: 200px; border: 1px solid #00ff00; margin: 10px; display: inline-block;" onerror="this.style.display='none'">
-                <img src="/static/{{ character_name }}_image3.jpg" alt="Image 3" style="width: 200px; height: 200px; border: 1px solid #00ff00; margin: 10px; display: inline-block;" onerror="this.style.display='none'">
+                {% for image in character_data.additional_images %}
+                <img src="/static/{{ image }}" alt="{{ image }}" style="width: 200px; height: 200px; border: 1px solid #00ff00; margin: 10px; display: inline-block;" onerror="this.style.display='none'">
+                {% endfor %}
             </div>
-            <!-- Line 107: </div> - Closes image container -->
-            
-            <!--
-            Line 108: <p style="...">[Image slots: ...]</p>
-              - <p>: Paragraph with placeholder text
-              - Shows user which files to add
-              - {{ character_name }}: Template variable (shows character name)
-            -->
-            <p style="color: #666; font-style: italic;">[Image slots: Add {{ character_name }}_image1.jpg, image2.jpg, image3.jpg to static folder]</p>
+            {% else %}
+            <p style="color: #666; font-style: italic;">[No additional images - Add images to additional_images list in CHARACTERS dictionary]</p>
+            {% endif %}
         </div>
         <!-- Line 109: </div> - Closes additional images section -->
         
