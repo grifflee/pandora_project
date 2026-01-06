@@ -17,7 +17,7 @@ LOCATIONS = {
         "lat": 3.20, 
         "lon": 73.22,
         # NEW LINE: A direct link to a tropical reef
-        "image": "https://i.natgeofe.com/n/da379044-8eab-4a53-b9a7-d9cfbf314179/GettyImages-143949963.jpg"
+        "image": "static/eastern_sea.png"
     }
 }
 
