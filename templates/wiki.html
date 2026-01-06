@@ -60,6 +60,25 @@
             font-size: 16px;
             display: block;
         }
+        
+        /* LESSON: Individual Color Classes for Character Names */
+        /* These classes override the default green color */
+        /* LESSON: CSS Specificity - We need to be MORE specific than .character-button span */
+        .character-button span.name-light-blue {
+            color: #87ceeb;  /* Light blue color */
+        }
+        
+        .character-button span.name-white {
+            color: #ffffff;  /* White color */
+        }
+        
+        .character-button span.name-red {
+            color: #ff0000;  /* Red color */
+        }
+        
+        .character-button span.name-orange {
+            color: #ffa500;  /* Orange color */
+        }
     </style>
 </head>
 <body>
@@ -80,19 +99,19 @@
             <!-- LESSON: Button for Jake Sully -->
             <button class="character-button" onclick="showCharacter('jake')">
                 <img src="/static/jake_sully.jpg" alt="Jake Sully">
-                <span>Jake Sully</span>
+                <span class="name-light-blue">Jake Sully</span>
             </button>
             
             <!-- LESSON: Button for Neytiri -->
             <button class="character-button" onclick="showCharacter('neytiri')">
                 <img src="/static/neytiri.jpg" alt="Neytiri">
-                <span>Neytiri</span>
+                <span class="name-light-blue">Neytiri</span>
             </button>
             
             <!-- LESSON: Button for Colonel Miles Quaritch -->
             <button class="character-button" onclick="showCharacter('colonel')">
                 <img src="/static/colonel_quaritch.jpeg" alt="Colonel Miles Quaritch">
-                <span>Colonel Quaritch</span>
+                <span class="name-white">Colonel Quaritch</span>
             </button>
             
             <!-- LESSON: Button for Ronal (Fire Princess) -->
@@ -104,31 +123,31 @@
             <!-- LESSON: Button for Kiri -->
             <button class="character-button" onclick="showCharacter('kiri')">
                 <img src="/static/kiri.jpg" alt="Kiri">
-                <span>Kiri</span>
+                <span class="name-light-blue">Kiri</span>
             </button>
             
             <!-- LESSON: Button for Toruk -->
             <button class="character-button" onclick="showCharacter('toruk')">
                 <img src="/static/toruk.jpg" alt="Toruk">
-                <span>Toruk</span>
+                <span class="name-orange">Toruk</span>
             </button>
             
             <!-- LESSON: Button for Tuk (Youngest Daughter) -->
             <button class="character-button" onclick="showCharacter('tuk')">
                 <img src="/static/tuk.jpg" alt="Tuk">
-                <span>Tuk</span>
+                <span class="name-light-blue">Tuk</span>
             </button>
             
             <!-- LESSON: Button for Neteyam -->
             <button class="character-button" onclick="showCharacter('neteyam')">
                 <img src="/static/neteyam.jpg" alt="Neteyam">
-                <span>Neteyam</span>
+                <span class="name-light-blue">Neteyam</span>
             </button>
             
             <!-- LESSON: Button for Lo'ak -->
             <button class="character-button" onclick="showCharacter('loak')">
                 <img src="/static/loak.jpg" alt="Lo'ak">
-                <span>Lo'ak</span>
+                <span class="name-light-blue">Lo'ak</span>
             </button>
             
             <!-- LESSON: Button for Tsireya -->
@@ -146,8 +165,8 @@
             <!-- personal test for Varang-->
             <button class="character-button" onclick="showCharacter('varang')">
                 <img src="/static/varang.jpg" alt="Varang">
-                <span>Varang</span>
-            </button>"
+                <span class="name-red">Varang</span>
+            </button>
         </div>
     </div>
     
