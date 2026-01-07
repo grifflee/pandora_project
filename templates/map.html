@@ -1,0 +1,98 @@
+<!DOCTYPE html> 
+<html> 
+<head>
+    <title>RDA Wiki - Pandora Map</title>
+    <style>
+        body { 
+            background-color: black; 
+            color: #0b500b; 
+            font-family: monospace; 
+            text-align: center; 
+            margin-top: 50px;
+            padding: 20px;
+        }
+        
+        nav {
+            margin-bottom: 30px;
+        }
+        
+        nav a {
+            color: #00ff00;
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 2px solid #00ff00;
+            margin: 0 10px;
+            display: inline-block;
+        }
+        
+        #content {
+            background-color: white;
+            color: black;
+            border: 2px solid #00ff00;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 1200px;
+            text-align: left;
+        }
+        
+        .map-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .map-image {
+            max-width: 100%;
+            height: auto;
+            border: 2px solid #00ff00;
+            display: block;
+            margin: 0 auto;
+        }
+        
+        .map-placeholder {
+            width: 100%;
+            min-height: 600px;
+            background-color: #1a1a1a;
+            border: 2px solid #00ff00;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-style: italic;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/">RADAR</a>
+        <a href="/wiki">WIKI</a>
+        <a href="/map">MAP</a>
+    </nav>
+    
+    <h1>RDA WIKI - PANDORA MAP</h1>
+    
+    <div id="content">
+        <h2>Pandora Geographic Map</h2>
+        <p>Interactive map showing key locations and regions of Pandora.</p>
+        
+        <div class="map-container">
+            <img src="/static/pandora_map.png" alt="Pandora Map" class="map-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="map-placeholder" style="display: none;">
+                [Map Image Slot: Add pandora_map.png to the static folder]
+                <br>
+                <small>Place your map image in the static folder as pandora_map.png</small>
+            </div>
+        </div>
+        
+        <div style="margin-top: 30px; padding: 15px; border: 1px solid #00ff00;">
+            <h3>Key Locations</h3>
+            <ul>
+                <li>Hallelujah Mountains - Floating mountain range</li>
+                <li>Eastern Sea - Coastal region with reef systems</li>
+                <li>Forest Regions - Dense jungle areas</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
+

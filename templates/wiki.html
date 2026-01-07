@@ -35,8 +35,6 @@
             text-align: left;
         }
         
-        /* LESSON: CSS Class Selector */
-        /* .character-button targets elements with class="character-button" */
         .character-button {
             background-color: #004400;
             border: 2px solid #00ff00;
@@ -47,7 +45,6 @@
             text-align: center;
         }
         
-        /* LESSON: CSS for images inside character buttons */
         .character-button img {
             width: 150px;
             height: 150px;
@@ -61,31 +58,28 @@
             display: block;
         }
         
-        /* LESSON: Individual Color Classes for Character Names */
-        /* These classes override the default green color */
-        /* LESSON: CSS Specificity - We need to be MORE specific than .character-button span */
         .character-button span.name-light-blue {
-            color: #87ceeb;  /* Light blue color */
+            color: #87ceeb;
         }
         
         .character-button span.name-white {
-            color: #ffffff;  /* White color */
+            color: #ffffff;
         }
         
         .character-button span.name-red {
-            color: #ff0000;  /* Red color */
+            color: #ff0000;
         }
         
         .character-button span.name-orange {
-            color: #ffa500;  /* Orange color */
+            color: #ffa500;
         }
     </style>
 </head>
 <body>
-    <!-- LESSON: Navigation Tabs -->
     <nav>
         <a href="/">RADAR</a>
         <a href="/wiki">WIKI</a>
+        <a href="/map">MAP</a>
     </nav>
     
     <h1>RDA WIKI</h1>
@@ -94,75 +88,62 @@
         <h2>Welcome to the RDA Wiki</h2>
         <p>This is the wiki page. Information about Pandora characters and locations will go here.</p>
         
-        <!-- LESSON: Character Buttons with Images -->
         <div style="text-align: center; margin-top: 30px;">
-            <!-- LESSON: Button for Jake Sully -->
             <button class="character-button" onclick="showCharacter('jake')">
                 <img src="/static/jake_sully.jpg" alt="Jake Sully">
                 <span class="name-light-blue">Jake Sully</span>
             </button>
             
-            <!-- LESSON: Button for Neytiri -->
             <button class="character-button" onclick="showCharacter('neytiri')">
                 <img src="/static/neytiri.jpg" alt="Neytiri">
                 <span class="name-light-blue">Neytiri</span>
             </button>
             
-            <!-- LESSON: Button for Colonel Miles Quaritch -->
             <button class="character-button" onclick="showCharacter('colonel')">
                 <img src="/static/colonel_quaritch.jpeg" alt="Colonel Miles Quaritch">
                 <span class="name-white">Colonel Quaritch</span>
             </button>
             
-            <!-- LESSON: Button for Ronal (Fire Princess) -->
             <button class="character-button" onclick="showCharacter('ronal')">
                 <img src="/static/ronal.jpg" alt="Ronal">
                 <span>Ronal</span>
             </button>
             
-            <!-- LESSON: Button for Kiri -->
             <button class="character-button" onclick="showCharacter('kiri')">
                 <img src="/static/kiri.jpg" alt="Kiri">
                 <span class="name-light-blue">Kiri</span>
             </button>
             
-            <!-- LESSON: Button for Toruk -->
             <button class="character-button" onclick="showCharacter('toruk')">
                 <img src="/static/toruk.jpg" alt="Toruk">
                 <span class="name-orange">Toruk</span>
             </button>
             
-            <!-- LESSON: Button for Tuk (Youngest Daughter) -->
             <button class="character-button" onclick="showCharacter('tuk')">
                 <img src="/static/tuk.jpg" alt="Tuk">
                 <span class="name-light-blue">Tuk</span>
             </button>
             
-            <!-- LESSON: Button for Neteyam -->
             <button class="character-button" onclick="showCharacter('neteyam')">
                 <img src="/static/neteyam.jpg" alt="Neteyam">
                 <span class="name-light-blue">Neteyam</span>
             </button>
             
-            <!-- LESSON: Button for Lo'ak -->
             <button class="character-button" onclick="showCharacter('loak')">
                 <img src="/static/loak.jpg" alt="Lo'ak">
                 <span class="name-light-blue">Lo'ak</span>
             </button>
             
-            <!-- LESSON: Button for Tsireya -->
             <button class="character-button" onclick="showCharacter('tsireya')">
                 <img src="/static/tsireya.jpg" alt="Tsireya">
                 <span>Tsireya</span>
             </button>
             
-            <!-- LESSON: Button for Tonowari -->
             <button class="character-button" onclick="showCharacter('tonowari')">
                 <img src="/static/tonowari.jpg" alt="Tonowari">
                 <span>Tonowari</span>
             </button>
 
-            <!-- personal test for Varang-->
             <button class="character-button" onclick="showCharacter('varang')">
                 <img src="/static/varang.jpg" alt="Varang">
                 <span class="name-red">Varang</span>
@@ -170,14 +151,10 @@
         </div>
     </div>
     
-    <!-- LESSON: JavaScript function for button clicks -->
     <script>
         function showCharacter(characterName) {
-            // LESSON: window.location.href redirects to a new page
-            // This navigates to the character's individual page
             window.location.href = '/character/' + characterName;
         }
     </script>
 </body>
 </html>
-

@@ -1,22 +1,9 @@
 <!DOCTYPE html> 
-<!--
-LESSON: HTML Document Structure
-================================
-HTML (HyperText Markup Language) is the structure of web pages.
-- <!DOCTYPE html> tells the browser this is HTML5
-- <html> is the root element
-- <head> contains metadata (title, styles, scripts)
-- <body> contains visible content
--->
 <html> 
 <head>
     <title>RDA Weather Systems</title>
     
-    <!-- LESSON: CSS (Cascading Style Sheets) -->
-    <!-- CSS controls how HTML elements look -->
     <style>
-        /* LESSON: CSS Selectors and Properties */
-        /* body selector applies styles to the <body> element */
         body { 
             background-color: black; 
             color: #0b500b; 
@@ -24,29 +11,25 @@ HTML (HyperText Markup Language) is the structure of web pages.
             text-align: center; 
             margin-top: 50px;
             padding: 20px;
-            
-            /* LESSON: Background image properties */
-            background-size: cover; /* Stretch image to fill entire viewport */
-            background-position: center; /* Keep center of image visible */
-            background-repeat: no-repeat; /* Don't tile the image */
-            transition: background-image 0.5s ease-in-out; /* Smooth fade effect */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            transition: background-image 0.5s ease-in-out;
         }
         
-        /* LESSON: ID selector (#) - targets element with id="result" */
         #result {
-            background-color: white; /* Solid white background for better readability */
-            color: black; /* Black text on white background */
+            background-color: white;
+            color: black;
             border: 2px solid #00ff00;
             padding: 20px;
             margin: 20px auto;
             max-width: 600px;
             min-height: 150px;
-            white-space: pre-line; /* Preserves line breaks (\n) */
+            white-space: pre-line;
             font-size: 14px;
             line-height: 1.6;
         }
         
-        /* LESSON: Class selector (.) - targets elements with class="status" */
         .status {
             font-size: 1.2em;
             font-weight: bold;
@@ -54,7 +37,6 @@ HTML (HyperText Markup Language) is the structure of web pages.
             padding: 5px;
         }
         
-        /* LESSON: Element selector - targets all <button> elements */
         button { 
             background-color: #004400; 
             color: #00ff00; 
@@ -64,29 +46,25 @@ HTML (HyperText Markup Language) is the structure of web pages.
             font-family: monospace;
             font-size: 14px;
             margin: 10px;
-            transition: all 0.3s ease; /* Smooth transition for hover effect */
+            transition: all 0.3s ease;
         }
         
-        /* LESSON: Pseudo-class selector (:hover) */
-        /* This style applies when you hover over the button */
         button:hover {
             background-color: #00ff00; 
             color: black;
-            transform: scale(1.05); /* Slightly enlarge on hover */
+            transform: scale(1.05);
         }
         
-        /* LESSON: Disabled state styling */
         button:disabled {
             opacity: 0.5;
             cursor: not-allowed;
         }
         
         h1 {
-            text-shadow: 0 0 10px #00ff00; /* Glowing text effect */
+            text-shadow: 0 0 10px #00ff00;
             margin-bottom: 10px;
         }
         
-        /* LESSON: Child selector - targets <div> inside #result */
         #result .weather-detail {
             margin: 5px 0;
         }
@@ -94,79 +72,40 @@ HTML (HyperText Markup Language) is the structure of web pages.
 
 </head>
 <body>
-    <!-- LESSON: HTML Comments -->
-    <!-- Comments help document your code but don't appear on the page -->
-    
-    <!-- LESSON: Navigation Tabs -->
-    <!-- These links let users switch between pages -->
     <nav style="margin-bottom: 30px;">
         <a href="/" style="color: #00ff00; text-decoration: none; padding: 10px 20px; border: 2px solid #00ff00; margin: 0 10px; display: inline-block;">RADAR</a>
         <a href="/wiki" style="color: #00ff00; text-decoration: none; padding: 10px 20px; border: 2px solid #00ff00; margin: 0 10px; display: inline-block;">WIKI</a>
+        <a href="/map" style="color: #00ff00; text-decoration: none; padding: 10px 20px; border: 2px solid #00ff00; margin: 0 10px; display: inline-block;">MAP</a>
     </nav>
     
     <h1>RDA SECTOR SCANNER - RADAR</h1>
     <p>Select a sector to scan for weather conditions</p>
     
-    <!-- LESSON: HTML div element -->
-    <!-- div is a container element used for layout and styling -->
     <div id="result">Waiting for data...</div>
 
-    <!-- LESSON: HTML button with onclick event -->
-    <!-- onclick is an inline event handler that calls JavaScript when clicked -->
     <button onclick="scanSector('hallelujah_mountains')">🏔️ SCAN SECTOR: MOUNTAINS</button>
     <button onclick="scanSector('eastern_sea')">🌊 SCAN SECTOR: REEF</button>
 
-    <!-- LESSON: JavaScript in HTML -->
-    <!-- Scripts can be in <head> or <body>. Putting at end of body is often better for performance -->
     <script>
-        /**
-         * LESSON: JavaScript Functions and Async/Await
-         * ==============================================
-         * 
-         * async function = This function can use 'await' to wait for asynchronous operations
-         * (like API calls) without blocking the browser
-         * 
-         * Parameters:
-         *   sectorKey (string): The location identifier to scan
-         */
         async function scanSector(sectorKey) {
-            // LESSON: DOM Manipulation
-            // document.getElementById() finds an element by its ID attribute
             const resultDiv = document.getElementById("result");
             const buttons = document.querySelectorAll("button");
             
-            // LESSON: Disable buttons during request (prevent double-clicks)
             buttons.forEach(btn => btn.disabled = true);
             
-            // LESSON: Updating element content
-            // innerText sets plain text (strips HTML)
-            // innerHTML allows HTML tags (but be careful with user input!)
             resultDiv.innerText = "CONNECTING TO SATELLITE...\nEstablishing link...";
             
             try {
-                // LESSON: Fetch API - Modern way to make HTTP requests
-                // fetch() returns a Promise (an object representing future completion)
-                // await pauses execution until the Promise resolves
                 const response = await fetch('/get_weather/' + sectorKey);
                 
-                // LESSON: HTTP Status Codes
-                // response.ok is true if status is 200-299 (success)
-                // response.status contains the numeric status code
                 if (response.ok) {
-                    // LESSON: JSON Parsing
-                    // response.json() parses the JSON response body
                     const data = await response.json();
                     
-                    // LESSON: Template Literals (backticks)
-                    // Template literals allow string interpolation with ${variable}
-                    // They also preserve line breaks and formatting
                     let resultText = `SECTOR: ${data.location}\n`;
                     resultText += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
                     resultText += `TEMPERATURE: ${data.temp}°C\n`;
                     resultText += `WIND SPEED: ${data.wind} km/h\n`;
                     
-                    // LESSON: Conditional rendering
-                    // Only show data if it exists (not null/undefined)
                     if (data.wind_direction) {
                         resultText += `WIND DIRECTION: ${data.wind_direction}°\n`;
                     }
@@ -179,50 +118,34 @@ HTML (HyperText Markup Language) is the structure of web pages.
                     
                     resultText += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
                     
-                    // LESSON: Using innerHTML for styled content
-                    // We can include HTML tags for styling
                     resultDiv.innerHTML = resultText + 
                         `<span class="status" style="color: ${data.status_color};">` +
                         `STATUS: ${data.status}` +
                         `</span>`;
                     
-                    // LESSON: Updating CSS styles dynamically
-                    // We can change any CSS property via JavaScript
                     document.body.style.backgroundImage = `url('${data.image}')`;
                     
                 } else {
-                    // LESSON: Error handling for HTTP errors
-                    // Try to parse error message from response
                     let errorMessage = "SIGNAL LOST";
                     try {
                         const errorData = await response.json();
                         errorMessage = errorData.message || errorData.error || errorMessage;
                     } catch (e) {
-                        // If response isn't JSON, use status code
                         errorMessage = `ERROR ${response.status}: ${response.statusText}`;
                     }
                     
                     resultDiv.innerText = `${errorMessage}\n\nPlease try again later.`;
-                    resultDiv.style.borderColor = "#ff0000"; // Red border for errors
+                    resultDiv.style.borderColor = "#ff0000";
                 }
                 
             } catch (error) {
-                // LESSON: Try/Catch Error Handling
-                // catch blocks handle exceptions (network errors, parsing errors, etc.)
-                console.error("Scan error:", error); // LESSON: console.error for debugging
+                console.error("Scan error:", error);
                 resultDiv.innerText = `NETWORK ERROR\n\nFailed to connect to satellite.\nError: ${error.message}`;
                 resultDiv.style.borderColor = "#ff0000";
             } finally {
-                // LESSON: Finally block
-                // Code in 'finally' always runs, whether there was an error or not
-                // This ensures buttons are re-enabled even if something goes wrong
                 buttons.forEach(btn => btn.disabled = false);
             }
         }
-        
-        // LESSON: Event Listeners (Alternative to inline onclick)
-        // This is a more modern approach, but inline onclick works fine for simple cases
-        // You could also use: button.addEventListener('click', () => scanSector('hallelujah_mountains'))
     </script>
 
 </body>
